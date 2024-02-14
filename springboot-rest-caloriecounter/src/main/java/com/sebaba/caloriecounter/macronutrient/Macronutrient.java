@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -28,8 +27,7 @@ public class Macronutrient {
 	@Column(name = "kcal_per_gram")
 	private Byte kcalPerGram;
 	
-	@OneToMany
-	@JoinColumn(name = "macronutrient_id")
+	@OneToMany(mappedBy = "macronutrient")
 	private List<ProductMacronutrient> productMacronutrientList;
 	
 	

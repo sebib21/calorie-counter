@@ -7,6 +7,7 @@ import com.sebaba.caloriecounter.mealcontent.MealContent;
 import com.sebaba.caloriecounter.productmacronutrient.ProductMacronutrient;
 import com.sebaba.caloriecounter.productmicronutrient.ProductMicronutrient;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -43,10 +44,10 @@ public class Product {
 	@JoinColumn(name = "category_id")
 	private Category category;
 	
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", cascade = CascadeType.PERSIST)
 	private List<ProductMacronutrient> productMacronutrientList;
 	
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", cascade = CascadeType.PERSIST)
 	private List<ProductMicronutrient> productMicronutrientList;
 	
 	@OneToMany(mappedBy = "product")
