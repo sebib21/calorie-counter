@@ -39,6 +39,12 @@ public class GlobalExceptionHandler {
 		return new ErrorResponse("Product doesn't exist!", productNotFoundException, HttpStatus.NOT_FOUND);
 	}
 	
+	@ExceptionHandler(WeightGoalNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	public ErrorResponse handleWeightGoalNotFoundException(WeightGoalNotFoundException weightGoalNotFoundException) {
+		return new ErrorResponse("Specified weight goal doesn't exist!", weightGoalNotFoundException, HttpStatus.NOT_FOUND);
+	}
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException methodArgumentNotValidException) {

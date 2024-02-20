@@ -8,6 +8,7 @@ import com.sebaba.caloriecounter.core.validation.NamingValidation;
 import com.sebaba.caloriecounter.productmacronutrient.CreateProductMacronutrientDTO;
 import com.sebaba.caloriecounter.productmicronutrient.CreateProductMicronutrientDTO;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 public record CreateProductDTO(
@@ -25,9 +26,9 @@ public record CreateProductDTO(
 		Integer categoryId,
 		
 		@NotNull(message = "The macronutrients for the product need to be specified!")
-		List<CreateProductMacronutrientDTO> productMacronutrientList,
+		List<@Valid CreateProductMacronutrientDTO> productMacronutrientList,
 		
 		@NotNull(message = "The micronutrients for the product need to be specified!")
-		List<CreateProductMicronutrientDTO> productMicronutrientList
+		List<@Valid CreateProductMicronutrientDTO> productMicronutrientList
 		
 ){}

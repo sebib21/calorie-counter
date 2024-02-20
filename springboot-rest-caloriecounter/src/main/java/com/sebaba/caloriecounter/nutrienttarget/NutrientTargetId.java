@@ -7,7 +7,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-class NutrientTargetId implements Serializable{
+class NutrientTargetId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

@@ -18,7 +18,7 @@ import com.sebaba.caloriecounter.productmicronutrient.ProductMicronutrient;
 import com.sebaba.caloriecounter.productmicronutrient.RetrieveProductMicronutrientDTO;
 
 @Service
-public class ProductMapper{
+public class ProductMapper {
 
 	private final CategoryService categoryService;
 	private final MacronutrientService macronutrientService;

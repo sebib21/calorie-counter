@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sebaba.caloriecounter.core.exception.ProductNotFoundException;
 
 @Service
-class ProductServiceImpl implements ProductService{
+class ProductServiceImpl implements ProductService {
 
 	private final ProductRepository productRepository;
 	private final ProductMapper productMapper;
@@ -47,8 +47,7 @@ class ProductServiceImpl implements ProductService{
 	
 	@Override
 	public void saveProduct(CreateProductDTO createProductDTO) {
-		Product product = productRepository.save(productMapper.toProduct(createProductDTO));
-		System.out.println(product);
+		productRepository.save(productMapper.toProduct(createProductDTO));
 	}
 
 }

@@ -13,7 +13,7 @@ import com.sebaba.caloriecounter.core.validation.NamingValidation;
 import jakarta.validation.Payload;
 
 class AnnotationsTest {
-
+	
 	@Test
     public void testValidName() {
         NamingConstraintValidator validator = new NamingConstraintValidator();

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sebaba.caloriecounter.core.exception.CategoryNotFoundException;
 
 @Service
-class CategoryServiceImpl implements CategoryService{
+class CategoryServiceImpl implements CategoryService {
 
 	private final CategoryRepository categoryRepository;
 	private final CategoryMapper categoryMapper;
