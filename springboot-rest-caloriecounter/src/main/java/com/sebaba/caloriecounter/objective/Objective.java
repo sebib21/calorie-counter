@@ -27,9 +27,6 @@ public class Objective {
 	@Column(name = "objective_id")
 	private Long objectiveId;
 	
-	@Column(name = "meals_per_day")
-	private Integer mealsPerDay;
-	
 	@Column(name = "weight")
 	private Double weight;
 	
@@ -49,8 +46,7 @@ public class Objective {
 	
 	public Objective() {}
 
-	public Objective(Integer mealsPerDay, Double weight, Double dailyKcal) {
-		this.mealsPerDay = mealsPerDay;
+	public Objective(Double weight, Double dailyKcal) {
 		this.weight = weight;
 		this.dailyKcal = dailyKcal;
 	}
@@ -61,14 +57,6 @@ public class Objective {
 
 	public void setObjectiveId(Long objectiveId) {
 		this.objectiveId = objectiveId;
-	}
-
-	public Integer getMealsPerDay() {
-		return mealsPerDay;
-	}
-
-	public void setMealsPerDay(Integer mealsPerDay) {
-		this.mealsPerDay = mealsPerDay;
 	}
 
 	public Double getWeight() {
@@ -113,7 +101,7 @@ public class Objective {
 
 	@Override
 	public String toString() {
-		return "Objective [objectiveId=" + objectiveId + ", mealsPerDay=" + mealsPerDay + ", weight=" + weight
+		return "Objective [objectiveId=" + objectiveId + ", weight=" + weight
 				+ ", dailyKcal=" + dailyKcal + "]";
 	}
 	

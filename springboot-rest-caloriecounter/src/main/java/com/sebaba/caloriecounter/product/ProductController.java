@@ -23,13 +23,18 @@ public class ProductController {
 	
 	
 	@GetMapping
-	public List<RetrieveProductDTO> findAllProducts() {
-		return productService.findAllProducts();
+	public List<RetrieveProductDTO> findFirst20Products() {
+		return productService.findFirst20Products();
 	}
 	
 	@GetMapping("/search/{prodName}")
-	public List<RetrieveProductDTO> findProductsByNameLike(@PathVariable String prodName) {
-		return productService.findProductsByNameLike(prodName);
+	public List<RetrieveProductDTO> findFirst10ByNameContaining(@PathVariable String prodName) {
+		return productService.findFirst10ByNameContaining(prodName);
+	}
+	
+	@GetMapping("bycategory/{categoryId}")
+	public List<RetrieveProductDTO> findFirst10ProductsByCatrgoryId(@PathVariable Integer categoryId) {
+		return productService.findFirstXProductsByCatrgoryId(categoryId, 10);
 	}
 	
 	@GetMapping("/{productId}")

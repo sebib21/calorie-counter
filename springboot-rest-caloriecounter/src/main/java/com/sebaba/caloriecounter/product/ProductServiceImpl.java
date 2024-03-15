@@ -17,21 +17,30 @@ class ProductServiceImpl implements ProductService {
 		this.productRepository = productRepository;
 		this.productMapper = productMapper;
 	}
+	
 
+	@Override
+	public List<RetrieveProductDTO> findFirst20Products() {
+		return productRepository
+				.findTop20ByOrderByProductIdAsc()
+				.stream()
+				.map(productMapper::toRetrieveProductDTO)
+				.collect(Collectors.toList());
+	}
 	
 	@Override
-	public List<RetrieveProductDTO> findAllProducts() {
+	public List<RetrieveProductDTO> findFirst10ByNameContaining(String namePart) {
 		return productRepository
-				.findAll()
+				.findTop10ByNameContainingOrderByProductIdAsc(namePart)
 				.stream()
 				.map(productMapper::toRetrieveProductDTO)
 				.collect(Collectors.toList());
 	}
 
 	@Override
-	public List<RetrieveProductDTO> findProductsByNameLike(String namePart) {
+	public List<RetrieveProductDTO> findFirstXProductsByCatrgoryId(Integer categoryId, int limit) {
 		return productRepository
-				.findByNameContaining(namePart)
+				.findTopXProductsByCatrgoryId(categoryId, limit)
 				.stream()
 				.map(productMapper::toRetrieveProductDTO)
 				.collect(Collectors.toList());

@@ -45,6 +45,12 @@ public class GlobalExceptionHandler {
 		return new ErrorResponse("Specified weight goal doesn't exist!", weightGoalNotFoundException, HttpStatus.NOT_FOUND);
 	}
 	
+	@ExceptionHandler(PersonNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	public ErrorResponse handleWeightGoalNotFoundException(PersonNotFoundException personNotFoundException) {
+		return new ErrorResponse("Person doesn't exist for the required operation!", personNotFoundException, HttpStatus.NOT_FOUND);
+	}
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException methodArgumentNotValidException) {

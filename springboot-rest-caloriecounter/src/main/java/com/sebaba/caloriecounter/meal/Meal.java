@@ -33,7 +33,7 @@ public class Meal {
 	@JoinColumn(name = "person_id")
 	private Person person;
 	
-	@OneToMany(mappedBy = "meal")
+	@OneToMany(mappedBy = "meal", orphanRemoval = true)
 	private List<MealContent> mealContentList;
 
 	
