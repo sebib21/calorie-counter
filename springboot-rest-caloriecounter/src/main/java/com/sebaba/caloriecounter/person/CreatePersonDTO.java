@@ -9,7 +9,7 @@ import com.sebaba.caloriecounter.core.validation.NamingValidation;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-public record CreatePersonDTO(
+record CreatePersonDTO(
 		
 		@NamingValidation(minLength = 2, maxLength = 50, message = "")
 		String firstName,

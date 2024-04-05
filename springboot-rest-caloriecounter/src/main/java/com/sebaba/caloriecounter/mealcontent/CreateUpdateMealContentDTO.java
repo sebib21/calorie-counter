@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.Range;
 
 import jakarta.validation.constraints.NotNull;
 
-public record CreateUpdateMealContentDTO(
+record CreateUpdateMealContentDTO(
 		
 		@NotNull(message = "The product must be specified!")
 		Long productId,

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/macronutrients")
-public class MacronutrientController {
+class MacronutrientController {
 
 	private final MacronutrientService macronutrientService;
 
@@ -18,7 +18,7 @@ public class MacronutrientController {
 	
 	
 	@GetMapping
-	public List<RetrieveMacronutrientDTO> findAllMacronutrients() {
+	List<RetrieveMacronutrientDTO> findAllMacronutrients() {
 		return macronutrientService.findAllMacronutrients();
 	}
 	

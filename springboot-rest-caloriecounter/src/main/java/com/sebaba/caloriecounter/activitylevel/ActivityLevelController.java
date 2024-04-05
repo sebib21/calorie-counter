@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/activitylevels")
-public class ActivityLevelController {
+class ActivityLevelController {
 
 	private final ActivityLevelService activityLevelService;
 
@@ -19,7 +19,7 @@ public class ActivityLevelController {
 	
 	
 	@GetMapping
-	public List<RetrieveActivityLevelDTO> findAllActivityLevels() {
+	List<RetrieveActivityLevelDTO> findAllActivityLevels() {
 		return activityLevelService.findAllActivityLevels();
 	}
 	

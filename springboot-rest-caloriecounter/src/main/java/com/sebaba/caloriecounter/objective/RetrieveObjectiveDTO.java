@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.sebaba.caloriecounter.nutrienttarget.RetrieveNutrientTargetDTO;
 
-public record RetrieveObjectiveDTO(
+record RetrieveObjectiveDTO(
 		Double weight,
 		Double dailyKcal,
 		List<RetrieveNutrientTargetDTO> nutrientTargetList

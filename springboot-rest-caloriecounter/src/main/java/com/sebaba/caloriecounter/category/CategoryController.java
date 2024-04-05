@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/categories")
-public class CategoryController {
+class CategoryController {
 
 	private final CategoryService categoryService;
 
@@ -19,13 +19,13 @@ public class CategoryController {
 
 	
 	@GetMapping
-	public List<RetrieveCategoryDTO> findAllCategories(){
+	List<RetrieveCategoryDTO> findAllCategories(){
 		return categoryService.findAllCategories();
 	}
 	
-	@GetMapping("/{id}")
-	public RetrieveCategoryDTO findCategoryById(@PathVariable Integer id) {
-		return categoryService.findCategoryById(id);
+	@GetMapping("/{categoryId}")
+	RetrieveCategoryDTO findCategoryById(@PathVariable Integer categoryId) {
+		return categoryService.findCategoryById(categoryId);
 	}
 	
 }

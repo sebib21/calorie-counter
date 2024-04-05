@@ -1,0 +1,43 @@
+/* Remove number input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Center block elements */
+.sb-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Input groups */
+.sb-inline-input-group {
+    position: relative;
+    border-collapse: separate;
+}
+.sb-inline-input-group .w3-input {
+    display: table-cell;
+    width: 80%;
+	margin-right: 3%;
+	margin-left: 10%;
+}
+.sb-inline-input-group h6 {
+    margin-left: 10%;
+}
+
+.sb-small-inline-input-group {
+    position: relative;
+    border-collapse: separate;
+    padding: .25rem;
+}
+.sb-small-inline-input-group .w3-input {
+    display: table-cell;
+    width: 70%;
+	margin-right: 3%;
+	margin-left: 10%;
+}

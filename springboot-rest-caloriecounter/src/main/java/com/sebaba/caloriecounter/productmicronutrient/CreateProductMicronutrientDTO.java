@@ -9,6 +9,6 @@ public record CreateProductMicronutrientDTO(
 		@NotNull(message = "Micronutrient must be specified!")
 		Integer micronutrientId,
 		
-		@Range(min = 0, max = 10000, message = "Micronutrient content must be null or between 0 and 10000!")
+		@Range(min = 0, max = 10000, message = "Micronutrient content must be between 0 and 10000!")
 		Double content
 ){}

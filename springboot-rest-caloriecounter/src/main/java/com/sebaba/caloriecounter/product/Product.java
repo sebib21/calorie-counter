@@ -56,8 +56,8 @@ public class Product {
 	
 	public Product() {}
 
-	public Product(String barcode, String name, Double kilocalories) {
-		this.barcode = barcode;
+	public Product(/* String barcode, */ String name, Double kilocalories) {
+		//this.barcode = barcode;
 		this.name = name;
 		this.kilocalories = kilocalories;
 	}

@@ -1,6 +1,6 @@
 package com.sebaba.caloriecounter.category;
 
-public record RetrieveCategoryDTO(
+record RetrieveCategoryDTO(
 		Integer categoryId,
 		String name,
 		String iconURL

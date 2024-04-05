@@ -29,7 +29,6 @@ class MacronutrientServiceImpl implements MacronutrientService {
 				.collect(Collectors.toList());
 	}
 
-
 	@Override
 	public Macronutrient findMacronutrientById(Integer macronutrientId) {
 		return macronutrientRepository

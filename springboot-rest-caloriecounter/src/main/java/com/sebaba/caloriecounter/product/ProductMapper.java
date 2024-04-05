@@ -68,7 +68,7 @@ public class ProductMapper {
 	public Product toProduct(CreateProductDTO createProductDTO) {
 	
 		Product product = new Product(
-				createProductDTO.barcode(), 
+				//createProductDTO.barcode(), 
 				createProductDTO.name(), 
 				createProductDTO.kilocalories());
 		

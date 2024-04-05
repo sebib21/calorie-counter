@@ -28,7 +28,6 @@ class MicronutrientServiceImpl implements MicronutrientService {
 				.collect(Collectors.toList());
 	}
 
-
 	@Override
 	public Micronutrient findMicronutrientById(Integer micronutrientId) {
 		return micronutrientRepository

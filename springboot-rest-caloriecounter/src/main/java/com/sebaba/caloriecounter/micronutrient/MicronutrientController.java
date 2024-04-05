@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/micronutrients")
-public class MicronutrientController {
+class MicronutrientController {
 
 	private final MicronutrientService micronutrientService;
 
@@ -18,7 +18,7 @@ public class MicronutrientController {
 	
 	
 	@GetMapping
-	public List<RetrieveMicronutrientDTO> findAllMicronutrients(){
+	List<RetrieveMicronutrientDTO> findAllMicronutrients(){
 		return micronutrientService.findAllMicronutrients();
 	}
 	

@@ -18,7 +18,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/meals")
-public class MealController {
+class MealController {
 
 	private final MealService mealService;
 
@@ -28,18 +28,18 @@ public class MealController {
 
 	
 	@GetMapping
-	public List<RetrieveMealDTO> findMealsByDateAndPersonId(@RequestParam @DateTimeFormat(iso = ISO.DATE) LocalDate date, 
+	List<RetrieveMealDTO> findMealsByDateAndPersonId(@RequestParam @DateTimeFormat(iso = ISO.DATE) LocalDate date, 
 															@RequestParam Long personId) {
 		return mealService.findMealsByDateAndPersonId(date, personId);
 	}
 
 	@PostMapping
-	public void saveMeal(@Valid @RequestBody CreateMealDTO createMealDTO) {
+	void saveMeal(@Valid @RequestBody CreateMealDTO createMealDTO) {
 		mealService.saveMeal(createMealDTO);
 	}
 
 	@DeleteMapping("{mealId}")
-	public void deleteMeal(@PathVariable Long mealId) {
+	void deleteMeal(@PathVariable Long mealId) {
 		mealService.deleteMeal(mealId);
 	}
 

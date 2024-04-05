@@ -6,7 +6,7 @@ import com.sebaba.caloriecounter.core.validation.MealDateValidation;
 
 import jakarta.validation.constraints.NotNull;
 
-public record CreateMealDTO(
+record CreateMealDTO(
 		
 		@MealDateValidation
 		LocalDate mealDate,

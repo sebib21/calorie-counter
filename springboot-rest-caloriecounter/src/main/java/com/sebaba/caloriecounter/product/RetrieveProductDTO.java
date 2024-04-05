@@ -1,6 +1,6 @@
 package com.sebaba.caloriecounter.product;
 
-public record RetrieveProductDTO(
+record RetrieveProductDTO(
 		Long productId,
 		String barcode,
 		String name,

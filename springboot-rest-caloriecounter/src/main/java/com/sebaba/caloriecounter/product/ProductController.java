@@ -13,7 +13,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/products")
-public class ProductController {
+class ProductController {
 
 	private final ProductService productService;
 
@@ -23,27 +23,27 @@ public class ProductController {
 	
 	
 	@GetMapping
-	public List<RetrieveProductDTO> findFirst20Products() {
+	List<RetrieveProductDTO> findFirst20Products() {
 		return productService.findFirst20Products();
 	}
 	
 	@GetMapping("/search/{prodName}")
-	public List<RetrieveProductDTO> findFirst10ByNameContaining(@PathVariable String prodName) {
+	List<RetrieveProductDTO> findFirst10ByNameContaining(@PathVariable String prodName) {
 		return productService.findFirst10ByNameContaining(prodName);
 	}
 	
 	@GetMapping("bycategory/{categoryId}")
-	public List<RetrieveProductDTO> findFirst10ProductsByCatrgoryId(@PathVariable Integer categoryId) {
+	List<RetrieveProductDTO> findFirst10ProductsByCatrgoryId(@PathVariable Integer categoryId) {
 		return productService.findFirstXProductsByCatrgoryId(categoryId, 10);
 	}
 	
 	@GetMapping("/{productId}")
-	public RetrieveFullProductDTO findProductById(@PathVariable Long productId) {
+	RetrieveFullProductDTO findProductById(@PathVariable Long productId) {
 		return productService.findProductById(productId);
 	}
 	
 	@PostMapping
-	public void saveProduct(@Valid @RequestBody CreateProductDTO createProductDTO) {
+	void saveProduct(@Valid @RequestBody CreateProductDTO createProductDTO) {
 		productService.saveProduct(createProductDTO);
 	}
 	

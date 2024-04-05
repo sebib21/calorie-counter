@@ -11,15 +11,16 @@ import com.sebaba.caloriecounter.productmicronutrient.CreateProductMicronutrient
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
-public record CreateProductDTO(
+record CreateProductDTO(
 		
-		String barcode,
+		//String barcode,
 		
 		@NamingValidation(minLength = 2, maxLength = 50, message = "The product name must be between 2 and 50 characters. "
 			+ "Also without more than one whitespaces in a row or special characeters like '<>[]{};'.")
 		String name,
 		
-		@Range(min = 1 ,max = 900, message = "The kilocalories range must be between 1 and 900!")
+		@NotNull(message = "The kilocalories must be between 1 and 900!")
+		@Range(min = 1 ,max = 900, message = "The kilocalories must be between 1 and 900!")
 		Double kilocalories,
 		
 		@NotNull(message = "The product category must be specified!")

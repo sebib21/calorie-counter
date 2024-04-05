@@ -6,6 +6,6 @@ public interface CategoryService {
 
 	public List<RetrieveCategoryDTO> findAllCategories();
 	
-	public RetrieveCategoryDTO findCategoryById(Integer id);
+	public RetrieveCategoryDTO findCategoryById(Integer categoryId);
 	
 }

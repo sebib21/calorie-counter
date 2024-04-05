@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/weightgoals")
-public class WeightGoalController {
+class WeightGoalController {
 
 	private final WeightGoalService weightGoalService;
 
@@ -18,7 +18,7 @@ public class WeightGoalController {
 	
 	
 	@GetMapping
-	public List<RetrieveWeightGoalDTO> findAllWeightGoals() {
+	List<RetrieveWeightGoalDTO> findAllWeightGoals() {
 		return weightGoalService.findAllWeightGoals();
 	}
 	

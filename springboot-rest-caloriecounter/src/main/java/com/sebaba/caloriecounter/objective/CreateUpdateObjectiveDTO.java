@@ -7,7 +7,7 @@ import com.sebaba.caloriecounter.nutrienttarget.CreateNutrientTargetDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
-public record CreateUpdateObjectiveDTO(
+record CreateUpdateObjectiveDTO(
 		
 		@NotNull(message = "The desired weight must be specified!")
 		Double weight,

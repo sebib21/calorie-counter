@@ -29,9 +29,9 @@ class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public RetrieveCategoryDTO findCategoryById(Integer id) {
+	public RetrieveCategoryDTO findCategoryById(Integer categoryId) {
 		return categoryRepository
-				.findById(id)
+				.findById(categoryId)
 				.map(categoryMapper::toRetrieveCategoryDTO)
 				.orElseThrow(CategoryNotFoundException::new);
 	}

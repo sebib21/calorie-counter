@@ -11,7 +11,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/meals/contents")
-public class MealContentController {
+class MealContentController {
 
 	private final MealContentService mealContentService;
 
@@ -21,12 +21,12 @@ public class MealContentController {
 
 
 	@PostMapping
-	public void saveOrUpdateMealContent(@Valid @RequestBody CreateUpdateMealContentDTO createUpdateMealContentDTO) {
+	void saveOrUpdateMealContent(@Valid @RequestBody CreateUpdateMealContentDTO createUpdateMealContentDTO) {
 		mealContentService.saveOrUpdateMealContent(createUpdateMealContentDTO);
 	}
 
 	@DeleteMapping
-	public void deleteMealContent(@RequestParam Long productId, @RequestParam Long mealId) {
+	void deleteMealContent(@RequestParam Long productId, @RequestParam Long mealId) {
 		mealContentService.deleteMealContent(productId, mealId);
 	}
 

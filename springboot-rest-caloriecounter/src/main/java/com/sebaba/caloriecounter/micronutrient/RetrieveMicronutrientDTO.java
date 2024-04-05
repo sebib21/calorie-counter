@@ -1,6 +1,6 @@
 package com.sebaba.caloriecounter.micronutrient;
 
-public record RetrieveMicronutrientDTO(
+record RetrieveMicronutrientDTO(
 		Integer micronutrientId,
 		String nutrient,
 		String type,

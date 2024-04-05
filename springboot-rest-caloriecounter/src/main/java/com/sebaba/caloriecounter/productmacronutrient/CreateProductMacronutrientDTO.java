@@ -9,7 +9,7 @@ public record CreateProductMacronutrientDTO(
 		@NotNull(message = "Macronutrient must be specified!")
 		Integer macronutrientId,
 		
-		@NotNull(message = "Macronutrient content can't be null!")
+		@NotNull(message = "Macronutrient content must be specified!")
 		@Range(min = 0, max = 100, message = "Macronutrient content must be between 0 and 100!")
 		Double content
 ){}

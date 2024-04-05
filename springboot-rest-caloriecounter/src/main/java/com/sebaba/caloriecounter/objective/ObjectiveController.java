@@ -9,7 +9,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/objectives")
-public class ObjectiveController {
+class ObjectiveController {
 
 	private final ObjectiveService objectiveService;
 
@@ -19,7 +19,7 @@ public class ObjectiveController {
 	
 	
 	@PostMapping
-	public void saveObjective(@Valid @RequestBody CreateUpdateObjectiveDTO createUpdateObjectiveDTO) {
+	void saveObjective(@Valid @RequestBody CreateUpdateObjectiveDTO createUpdateObjectiveDTO) {
 		objectiveService.saveObjective(createUpdateObjectiveDTO);
 	}
 	
