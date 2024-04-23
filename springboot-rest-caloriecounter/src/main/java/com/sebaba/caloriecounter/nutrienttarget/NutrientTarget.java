@@ -31,19 +31,15 @@ public class NutrientTarget {
 	
 	@Column(name = "percentage")
 	private Double percentage;
-	
-	@Column(name = "grams")
-	private Integer grams;
 
 	
 	public NutrientTarget() {}
 
-	public NutrientTarget(Objective objective, Macronutrient macronutrient, Double percentage, Integer grams) {
+	public NutrientTarget(Objective objective, Macronutrient macronutrient, Double percentage) {
 		this.id = new NutrientTargetId(objective.getObjectiveId(), macronutrient.getMacronutrientId());
 		this.objective = objective;
 		this.macronutrient = macronutrient;
 		this.percentage = percentage;
-		this.grams = grams;
 	}
 
 	public NutrientTargetId getId() {
@@ -78,18 +74,10 @@ public class NutrientTarget {
 		this.percentage = percentage;
 	}
 
-	public Integer getGrams() {
-		return grams;
-	}
-
-	public void setGrams(Integer grams) {
-		this.grams = grams;
-	}
-
 	@Override
 	public String toString() {
 		return "NutrientTarget [id=" + id + ", objective=" + objective + ", macronutrient=" + macronutrient
-				+ ", percentage=" + percentage + ", grams=" + grams + "]";
+				+ ", percentage=" + percentage + "]";
 	}
 	
 }

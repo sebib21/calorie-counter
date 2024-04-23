@@ -5,8 +5,9 @@ import java.time.LocalDate;
 record RetrievePersonDTO(
 		String firstName,
 		String lastName,
-		Character gender,
+		String gender,
 		LocalDate dateOfBirth,
 		Double height,
-		Double weight
+		Double weight,
+		String activityLevelDescription
 ){}

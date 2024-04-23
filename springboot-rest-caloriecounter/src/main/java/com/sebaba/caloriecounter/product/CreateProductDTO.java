@@ -10,10 +10,9 @@ import com.sebaba.caloriecounter.productmicronutrient.CreateProductMicronutrient
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 record CreateProductDTO(
-		
-		//String barcode,
 		
 		@NamingValidation(minLength = 2, maxLength = 50, message = "The product name must be between 2 and 50 characters. "
 			+ "Also without more than one whitespaces in a row or special characeters like '<>[]{};'.")
@@ -27,9 +26,11 @@ record CreateProductDTO(
 		Integer categoryId,
 		
 		@NotNull(message = "The macronutrients for the product need to be specified!")
+		@Size(min = 9, max = 9, message = "All macronutrients must be specified!")
 		List<@Valid CreateProductMacronutrientDTO> productMacronutrientList,
 		
 		@NotNull(message = "The micronutrients for the product need to be specified!")
+		@Size(min = 25, max = 25, message = "All micronutrients must be specified!")
 		List<@Valid CreateProductMicronutrientDTO> productMicronutrientList
 		
 ){}

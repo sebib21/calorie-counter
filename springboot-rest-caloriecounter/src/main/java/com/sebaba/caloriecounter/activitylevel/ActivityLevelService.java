@@ -6,4 +6,6 @@ public interface ActivityLevelService {
 
 	public List<RetrieveActivityLevelDTO> findAllActivityLevels();
 	
+	public RetrieveActivityLevelDTO findActivityLevelById(Integer activityLevelId);
+	
 }

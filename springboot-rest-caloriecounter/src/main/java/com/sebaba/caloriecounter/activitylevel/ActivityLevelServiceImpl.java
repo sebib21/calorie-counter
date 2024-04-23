@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.sebaba.caloriecounter.core.exception.ActivityLevelNotFoundException;
+
 @Service
 class ActivityLevelServiceImpl implements ActivityLevelService {
 
@@ -25,6 +27,14 @@ class ActivityLevelServiceImpl implements ActivityLevelService {
 				.stream()
 				.map(activityLevelMapper::toRetrieveActivityLevelDTO)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public RetrieveActivityLevelDTO findActivityLevelById(Integer activityLevelId) {
+		return activityLevelRepository
+				.findById(activityLevelId)
+				.map(activityLevelMapper::toRetrieveActivityLevelDTO)
+				.orElseThrow(ActivityLevelNotFoundException::new);
 	}
 
 }

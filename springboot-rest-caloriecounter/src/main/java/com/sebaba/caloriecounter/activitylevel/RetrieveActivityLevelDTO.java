@@ -1,6 +1,6 @@
 package com.sebaba.caloriecounter.activitylevel;
 
-record RetrieveActivityLevelDTO(
+public record RetrieveActivityLevelDTO(
 		Integer activityLevelId,
 		String descripion,
 		Double multiplier

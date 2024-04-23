@@ -14,7 +14,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+	
+	// For development purposes, the returned response includes the exception stack trace
 
+	@ExceptionHandler(ActivityLevelNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	public ErrorResponse handleActivityLevelNotFoundException(ActivityLevelNotFoundException activityLevelNotFoundException) {
+		return new ErrorResponse("Activity level doesn't exist!", activityLevelNotFoundException, HttpStatus.NOT_FOUND);
+	}
+	
 	@ExceptionHandler(CategoryNotFoundException.class)
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public ErrorResponse handleCategoryNotFoundException(CategoryNotFoundException categoryNotFoundException) {
@@ -49,6 +57,18 @@ public class GlobalExceptionHandler {
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public ErrorResponse handleWeightGoalNotFoundException(PersonNotFoundException personNotFoundException) {
 		return new ErrorResponse("Person doesn't exist for the required operation!", personNotFoundException, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(InvalidObjectiveException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public ErrorResponse handleIllegalArgumentException(InvalidObjectiveException invalidObjectiveException) {
+		return new ErrorResponse(invalidObjectiveException.getMessage(), invalidObjectiveException, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(IllegalArgumentException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public ErrorResponse handleIllegalArgumentException(IllegalArgumentException illegalArgumentException) {
+		return new ErrorResponse(illegalArgumentException.getMessage(), illegalArgumentException, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)

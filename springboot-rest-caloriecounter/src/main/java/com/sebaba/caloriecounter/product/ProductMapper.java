@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.sebaba.caloriecounter.category.Category;
-import com.sebaba.caloriecounter.category.CategoryService;
 import com.sebaba.caloriecounter.macronutrient.Macronutrient;
 import com.sebaba.caloriecounter.macronutrient.MacronutrientService;
 import com.sebaba.caloriecounter.micronutrient.Micronutrient;
@@ -20,13 +19,10 @@ import com.sebaba.caloriecounter.productmicronutrient.RetrieveProductMicronutrie
 @Service
 public class ProductMapper {
 
-	private final CategoryService categoryService;
 	private final MacronutrientService macronutrientService;
 	private final MicronutrientService micronutrientService;
 	
-	public ProductMapper(CategoryService categoryService, MacronutrientService macronutrientService, 
-			MicronutrientService micronutrientService) {
-		this.categoryService = categoryService;
+	public ProductMapper(MacronutrientService macronutrientService, MicronutrientService micronutrientService) {
 		this.macronutrientService = macronutrientService;
 		this.micronutrientService = micronutrientService;
 	}
@@ -68,19 +64,12 @@ public class ProductMapper {
 	public Product toProduct(CreateProductDTO createProductDTO) {
 	
 		Product product = new Product(
-				//createProductDTO.barcode(), 
 				createProductDTO.name(), 
 				createProductDTO.kilocalories());
 		
-		// set category
-		if(categoryService.findCategoryById(createProductDTO.categoryId()) != null){
-			Category category = new Category();
-			category.setCategoryId(createProductDTO.categoryId());
-			product.setCategory(category);
-		}
+		Category category = new Category();
+		category.setCategoryId(createProductDTO.categoryId());
 		
-		
-		// set macronutrients
 		List<ProductMacronutrient> productMacronutrientList = new ArrayList<>();
 		createProductDTO.productMacronutrientList()
 			.forEach(productMacronutrient -> {
@@ -88,17 +77,16 @@ public class ProductMapper {
 				productMacronutrientList.add(new ProductMacronutrient(product, macronutrient, productMacronutrient.content()));
 		});
 		
-		product.setProductMacronutrientList(productMacronutrientList);
-		
-		
-		// set micronutrients
 		List<ProductMicronutrient> productMicronutrientList = new ArrayList<>();
 		createProductDTO.productMicronutrientList()
 			.forEach(productMicronutrient -> {
 				Micronutrient micronutrient = micronutrientService.findMicronutrientById(productMicronutrient.micronutrientId());
 				productMicronutrientList.add(new ProductMicronutrient(product, micronutrient, productMicronutrient.content()));
 			});
-		
+
+		// set the product category + product's macronutrient and micronutrient lists
+		product.setCategory(category);
+		product.setProductMacronutrientList(productMacronutrientList);
 		product.setProductMicronutrientList(productMicronutrientList);
 		
 		return product;

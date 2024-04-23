@@ -11,6 +11,11 @@ class ErrorResponse {
 	
 	public ErrorResponse() {}
 
+	public ErrorResponse(String message, HttpStatus httpStatus) {
+		this.message = message;
+		this.httpStatus = httpStatus;
+	}
+
 	public ErrorResponse(String message, Throwable exception, HttpStatus httpStatus) {
 		this.message = message;
 		this.exception = exception;

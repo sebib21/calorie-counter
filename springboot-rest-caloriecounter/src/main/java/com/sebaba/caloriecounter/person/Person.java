@@ -7,6 +7,7 @@ import com.sebaba.caloriecounter.activitylevel.ActivityLevel;
 import com.sebaba.caloriecounter.meal.Meal;
 import com.sebaba.caloriecounter.objective.Objective;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -35,7 +36,7 @@ public class Person {
 	private String lastName;
 	
 	@Column(name = "gender")
-	private Character gender;
+	private String gender;
 	
 	@Column(name = "date_of_birth")
 	private LocalDate dateOfBirth;
@@ -53,14 +54,14 @@ public class Person {
 	@JoinColumn(name = "activity_level_id")
 	private ActivityLevel activityLevel;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "objective_id")
 	private Objective objective;
 
 	
 	public Person() {}
 
-	public Person(String firstName, String lastName, Character gender, LocalDate dateOfBirth, Double height,
+	public Person(String firstName, String lastName, String gender, LocalDate dateOfBirth, Double height,
 			Double weight) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -94,11 +95,11 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-	public Character getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(Character gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 

@@ -6,6 +6,7 @@ import com.sebaba.caloriecounter.nutrienttarget.NutrientTarget;
 import com.sebaba.caloriecounter.person.Person;
 import com.sebaba.caloriecounter.weightgoal.WeightGoal;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,16 +41,11 @@ public class Objective {
 	@OneToOne(mappedBy = "objective")
 	private Person person;
 	
-	@OneToMany(mappedBy = "objective")
+	@OneToMany(mappedBy = "objective", cascade = CascadeType.PERSIST)
 	private List<NutrientTarget> nutrientTargetList;
 
 	
 	public Objective() {}
-
-	public Objective(Double weight, Double dailyKcal) {
-		this.weight = weight;
-		this.dailyKcal = dailyKcal;
-	}
 
 	public Long getObjectiveId() {
 		return objectiveId;

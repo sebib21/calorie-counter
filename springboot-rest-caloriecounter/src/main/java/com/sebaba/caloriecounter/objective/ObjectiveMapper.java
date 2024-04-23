@@ -1,10 +1,16 @@
 package com.sebaba.caloriecounter.objective;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.sebaba.caloriecounter.macronutrient.Macronutrient;
+import com.sebaba.caloriecounter.macronutrient.MacronutrientService;
+import com.sebaba.caloriecounter.nutrienttarget.NutrientTarget;
 import com.sebaba.caloriecounter.nutrienttarget.RetrieveNutrientTargetDTO;
+import com.sebaba.caloriecounter.weightgoal.RetrieveWeightGoalDTO;
 import com.sebaba.caloriecounter.weightgoal.WeightGoal;
 import com.sebaba.caloriecounter.weightgoal.WeightGoalService;
 
@@ -12,9 +18,11 @@ import com.sebaba.caloriecounter.weightgoal.WeightGoalService;
 public class ObjectiveMapper {
 
 	private final WeightGoalService weightGoalService;
+	private final MacronutrientService macronutrientService;
 	
-	public ObjectiveMapper(WeightGoalService weightGoalService) {
+	public ObjectiveMapper(WeightGoalService weightGoalService, MacronutrientService macronutrientService) {
 		this.weightGoalService = weightGoalService;
+		this.macronutrientService = macronutrientService;
 	}
 
 
@@ -25,9 +33,8 @@ public class ObjectiveMapper {
 				objective.getNutrientTargetList()
 							.stream()
 							.map(nutrientTarget -> new RetrieveNutrientTargetDTO(
-									nutrientTarget.getMacronutrient().getNutrient(), 
-									nutrientTarget.getPercentage(), 
-									nutrientTarget.getGrams()
+									nutrientTarget.getMacronutrient().getNutrient(),
+									nutrientTarget.getPercentage()
 									)
 								)
 							.collect(Collectors.toList())
@@ -36,16 +43,24 @@ public class ObjectiveMapper {
 
 	public Objective toObjective(CreateUpdateObjectiveDTO createUpdateObjectiveDTO) {
 		
-		Double dailyKcal = null;
-		
-		Objective objective = new Objective(createUpdateObjectiveDTO.weight(), dailyKcal);
-		
-		if(weightGoalService.findWeightGoalById(createUpdateObjectiveDTO.weightGoalId()) != null) {
-			WeightGoal weightGoal = new WeightGoal();
-			weightGoal.setWeightGoalId(createUpdateObjectiveDTO.weightGoalId());
-			objective.setWeightGoal(weightGoal);
-		}
-		
+		RetrieveWeightGoalDTO retrieveWeightGoalDTO = weightGoalService.findWeightGoalById(createUpdateObjectiveDTO.weightGoalId());
+				
+		Objective objective = new Objective();
+		objective.setWeight(createUpdateObjectiveDTO.weight());
+
+		WeightGoal weightGoal = new WeightGoal();
+		weightGoal.setWeightGoalId(retrieveWeightGoalDTO.weightGoalId());
+		weightGoal.setCalories(retrieveWeightGoalDTO.calories());
+		objective.setWeightGoal(weightGoal);
+
+		List<NutrientTarget> nutrientTargetList = new ArrayList<>();
+		createUpdateObjectiveDTO.nutrientTargetList()
+			.forEach(nutrientTarget -> {
+				Macronutrient macronutrient = macronutrientService.findMacronutrientById(nutrientTarget.macronutrientId());
+				nutrientTargetList.add(new NutrientTarget(objective, macronutrient, nutrientTarget.percentage()));
+		});
+		objective.setNutrientTargetList(nutrientTargetList);		
+
 		return objective;
 	}
 	
